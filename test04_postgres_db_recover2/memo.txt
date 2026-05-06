@@ -1,0 +1,10 @@
+# memo.txt
+
+# 생성된 s3 bucket 의 이름(본인이 생성한 이름)
+db-backsup-storages-60e82221
+
+# full_db_backup.sql 파일을 s3 버킷에 업로드하기
+aws s3 cp ./full_db_backup.sql s3://db-backsup-storages-60e82221/full_db_backup.sql
+
+# 목록 확인하기
+aws s3 ls s3://db-backsup-storages-60e82221/

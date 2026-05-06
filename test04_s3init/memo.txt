@@ -1,0 +1,5 @@
+# memo.txt
+
+# 생성된 s3 bucket 의 이름
+db-backsup-storages-60e82221
+
