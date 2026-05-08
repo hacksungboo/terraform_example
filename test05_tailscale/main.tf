@@ -9,6 +9,15 @@ terraform {
         version = "~> 6.0"
     }
   }
+
+  # terraform 상태관리를 위한 remote 백엔드 설정
+  backend "s3" {
+    bucket = "tfstate-bucket-a3b93c6f" # 미리 생성한 s3 버킷의 이름
+    key = "lecture/terraform.tfstate" # /lecture/ 하위에 만들어 지도록
+    region = "ap-northeast-2"
+    #dynamodb_table = "dynamo db 테이블명"
+    encrypt = true # tfstate 에는 민감한 정보가 있을수 있기 때문에 암호화
+  }
 }
 
 
