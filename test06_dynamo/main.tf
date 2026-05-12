@@ -1,0 +1,27 @@
+
+terraform {
+  required_version = ">= 1.14.0" # github action 에서 에러 나지 않게 일부 수정
+  required_providers {
+    aws = {
+        source = "hashicorp/aws"
+        version = "~> 6.0"
+    }
+  }
+}
+
+resource "aws_dynamodb_table" "members" {
+    name = "members" # 테이블명 마음대로 지을수 있다  
+    billing_mode = "PAY_PER_REQUEST" # 비용 지불 방식 (요청 갯수당 과금하겠다 비용미미함)
+    # partition key
+    hash_key = "num"  # 카테고리명 마음대로 지을수 있다. (RDBMS 의 PK 과 유사)
+    # 정렬이 필요하다면 sort key도 추가한다.
+    #range_key = "정렬의 기준이 되는 칼럼(속성)", 밑에서 attribute 도 추가해야 한다.
+    # 속성을 이용해서  
+    attribute{
+        name = "num" # 카테고리의 
+        type = "N" # 데이터 type 을 설정한다  S 는 문자열  N 은 숫자 
+    }
+    tags = {
+        Name = "members TABLE"
+    }
+}
