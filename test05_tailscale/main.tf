@@ -15,7 +15,7 @@ terraform {
     bucket = "tfstate-bucket-a3b93c6f" # 미리 생성한 s3 버킷의 이름
     key = "lecture/terraform.tfstate" # /lecture/ 하위에 만들어 지도록
     region = "ap-northeast-2"
-    #dynamodb_table = "dynamo db 테이블명"
+    dynamodb_table = "terraform-lock" # 미리 준비된 dynamodb 테이블의 이름을 명시하면 lock 상태가 자동으로 관리
     encrypt = true # tfstate 에는 민감한 정보가 있을수 있기 때문에 암호화
   }
 }
